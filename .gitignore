@@ -1,15 +1,7 @@
 #hugo
 public/*
 
-#resource
-/resources/_gen/
-.hugo_build.lock
-hugo_stats.json
 
-#
-/node_modules/
-package-lock.json
-yarn.lock
 
 #
 .DS_Store
