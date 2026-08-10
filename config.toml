@@ -1,6 +1,6 @@
-baseURL = "https://workshop-sample.awsfcaj.com/"
-relativeURLs = false
-canonifyURLs = false
+baseURL = "https://manas1124.github.io/fcaj-workshop/"
+relativeURLs = true
+canonifyURLs = true
 defaultContentLanguage = "en"
 
 # Change the default theme to be use when building the site with Hugo
