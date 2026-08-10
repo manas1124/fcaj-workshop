@@ -19,10 +19,10 @@ The weekly activities are summarized as follows:
 
 **Week 4:** [Identity, Security, and Serverless Fundamentals](1.4-week4/)
 
-**Week 5:** [Project Analysis, Architecture Design, and Repository Planning](1.5-week5/)
+**Week 5:** [Project Analysis, Architecture Design, Foundation & IaC](1.5-week5/)
 
-**Week 6:** [Infrastructure Setup with AWS SAM, CloudFormation, and CI/CD](1.6-week6/)
+**Week 6:** [Auth, AI & Event-Driven](1.6-week6/)
 
-**Week 7:** [Project Implementation, Deployment, Testing, Documentation, and Final Submission](1.7-week7/)
+**Week 7:** [Frontend & Business Logic](1.7-week7/)
 
 **Week 8:** [Internship Wrap-up, Knowledge Consolidation, and Future Development](1.8-week8/)
