@@ -26,16 +26,12 @@ The company culture is very positive: everyone respects each other, works seriou
 **6. Internship Policies / Benefits**  
 The company provides an internship allowance and offers flexible working hours when needed. In addition, having the opportunity to join internal training sessions is a big plus.
 
----
+### Personal Reflections
 
-### Additional Questions
-- What did you find **most satisfying** during your internship?  
-- What do you think the company **should improve** for future interns?  
-- If recommending to a friend, would you **suggest they intern here**? Why or why not?  
+Throughout the program, I found the training curriculum to be carefully structured, progressing from foundational concepts to advanced topics. Combined with the close mentorship I received, this helped me build a clear and systematic knowledge base. The live sharing sessions with Cloud Engineers and Solution Architects actively working in the industry offered not only practical insights into the field but also a deeper understanding of how systems are operated on AWS.
 
----
+I would like to express my sincere gratitude to Mr. Nguyễn Gia Hưng — Head of Solutions Architecture at AWS Vietnam — for founding and leading the FCAJ community. His strategic vision, hands-on industry expertise, and dedication to mentoring have helped me gain a clearer understanding of my own strengths and the areas where I still need to grow, giving me the motivation to improve myself every single day.
 
-### Suggestions & Expectations
-- Do you have any suggestions to improve the internship experience?  
-- Would you like to continue this program in the future?  
-- Any other comments (free sharing):
+I am also deeply grateful to the mentors and admin team of the Bootcamp First Cloud AI Journey, who were always patient in answering my questions, providing timely technical support, and fostering a friendly yet professional learning environment. Their companionship was a tremendous source of motivation that helped me overcome the challenges I encountered throughout my internship.
+
+This invaluable experience has played a significant role in shaping my problem-solving mindset, strengthening my teamwork abilities, and building a solid technical foundation. I would highly recommend the FCAJ Bootcamp to any students interested in Cloud Computing, DevOps, or AI, as it truly provides a practical and effective environment for learning and embracing new technologies.

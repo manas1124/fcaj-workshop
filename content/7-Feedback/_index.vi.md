@@ -27,13 +27,12 @@ Văn hóa công ty rất tích cực: mọi người tôn trọng lẫn nhau, l�
 Công ty có hỗ trợ phụ cấp thực tập và tạo điều kiện về thời gian linh hoạt khi cần thiết. Ngoài ra, việc được tham gia các buổi đào tạo nội bộ là một điểm cộng lớn.
 
 
-### Một số câu hỏi khác
-- Điều bạn **hài lòng nhất** trong thời gian thực tập?  
-- Điều bạn nghĩ công ty **cần cải thiện** cho các thực tập sinh sau?  
-- Nếu giới thiệu cho bạn bè, bạn có **khuyên họ thực tập ở đây không**? Vì sao?  
+### Cảm nhận cá nhân
 
+Qua thời gian tham gia chương trình, em nhận thấy lộ trình đào tạo được thiết kế bài bản từ nền tảng đến chuyên sâu, cùng với sự đồng hành sát sao của đội ngũ mentor đã giúp em hệ thống hóa kiến thức một cách rõ ràng. Những buổi chia sẻ trực tiếp từ các Cloud Engineer và Solution Architect đang công tác tại doanh nghiệp không chỉ mang đến góc nhìn thực tế về ngành mà còn giúp em hiểu sâu hơn về cách vận hành hệ thống trên AWS.
 
-### Đề xuất & mong muốn
-- Bạn có đề xuất gì để cải thiện trải nghiệm trong kỳ thực tập?  
-- Bạn có muốn tiếp tục chương trình này trong tương lai?
-- Góp ý khác (tự do chia sẻ):
+Em xin chân thành cảm ơn anh Nguyễn Gia Hưng — Head of Solution Architect tại AWS Việt Nam, người đã kiến tạo và dẫn dắt cộng đồng FCAJ. Những định hướng chiến lược, kinh nghiệm thực chiến và sự tận tâm chia sẻ của anh đã giúp em nhìn nhận rõ hơn điểm mạnh, điểm cần hoàn thiện của bản thân, từ đó có động lực phát triển từng ngày.
+
+Em cũng xin gửi lời tri ân đến các anh chị mentor và team Admin của Bootcamp First Cloud AI Journey, những người đã luôn kiên nhẫn giải đáp thắc mắc, hỗ trợ kỹ thuật kịp thời và tạo nên một môi trường học tập thân thiện, chuyên nghiệp. Sự đồng hành của các anh chị là nguồn động lực lớn để em vượt qua những thử thách trong quá trình thực tập.
+
+Trải nghiệm quý giá này đã góp phần định hình tư duy giải quyết vấn đề, kỹ năng làm việc nhóm và nền tảng chuyên môn vững chắc cho em. Em sẵn sàng giới thiệu Bootcamp FCAJ đến các bạn sinh viên quan tâm đến Cloud Computing, DevOps và AI, bởi đây thực sự là môi trường giúp người học tiếp cận công nghệ mới một cách thực tiễn và hiệu quả nhất.
