@@ -1,18 +1,31 @@
 ---
-title: "5. Workshop"
-date: 2026-08-09
-draft: false
+title: "Workshop"
+date: 2024-01-01
 weight: 5
+chapter: false
+pre: " <b> 5. </b> "
 ---
 
-# 5. Workshop
+# Deploying the Smart Campus Platform (Serverless) on AWS
 
-## Tiếng Việt
+#### Overview
 
-Workshop này hướng dẫn triển khai hệ thống **Smart Campus** — nền tảng quản lý khuôn viên thông minh sử dụng kiến trúc serverless trên AWS. Hệ thống bao gồm backend microservices (Lambda, API Gateway, SQS, EventBridge), frontend React (Vite, S3, CloudFront), và các dịch vụ hỗ trợ (Cognito, DynamoDB, Rekognition, SES, SNS).
+**Smart Campus** is a 100% Serverless smart campus management platform that solves the problem of facial attendance (AI) and automates HR workflows with optimized costs thanks to the Pay-As-You-Go mechanism.
 
-## English
+In this Workshop, you will be guided to deploy the entire architecture of the system end-to-end, learning how to connect and configure security for more than 15 different AWS services, from Frontend, API, Database, to Event-Driven flows and Data Analytics.
 
-This workshop guides you through deploying the **Smart Campus** system — a smart campus management platform using serverless architecture on AWS. The system includes backend microservices (Lambda, API Gateway, SQS, EventBridge), React frontend (Vite, S3, CloudFront), and supporting services (Cognito, DynamoDB, Rekognition, SES, SNS).
+Instead of manual configuration (ClickOps), this workshop will also guide you through standardized setup steps, configuring environment variables, and linking services according to the **Least Privilege** principle.
 
-<!-- [SCREENSHOT: Ảnh bìa/tổng quan workshop] -->
+#### Workshop Content
+
+1. [Introduction](5.1-Introduction/)
+2. [Prerequisites](5.2-Prerequiste/)
+3. [Authentication & Security](5.3-Auth-Security/)
+4. [Database & Storage](5.4-Database-Storage/)
+5. [Core API Config](5.5-AI-API/)
+6. [Event-Driven Architecture](5.6-Event-Driven/)
+7. [Data Analytics (S3 & Athena)](5.7-Data-Analytics/)
+8. [Deploy & CI/CD Automation](5.8-CI-CD-Frontend/)
+9. [Monitoring & Tracing](5.9-Monitoring-Tracing/)
+10. [Testing & Validation](5.10-Testing-Validation/)
+11. [Resource Cleanup](5.11-Cleanup/)

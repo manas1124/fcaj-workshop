@@ -7,9 +7,9 @@ pre: " <b> 2. </b> "
 ---
 
 ## 1. Tổng quan dự án
-**Smart Campus Platform** là một hệ thống phần mềm toàn diện nhằm hiện đại hóa và số hóa quy trình quản lý tại các khuôn viên trường học và doanh nghiệp. Dự án chuyển đổi mô hình từ "Giám sát thụ động" sang "Vận hành tự động", bao gồm điểm danh bằng nhận diện khuôn mặt (AI), Quản lý công việc và nghỉ phép (Task & Leave Management), và Trung tâm phân tích dữ liệu lớn (Analytics Command Center).
+**Smart Campus Platform** là một hệ thống phần mềm toàn diện nhằm hiện đại hóa và số hóa quy trình quản lý công việc và điểm danh. Dự án bao gồm tự động hóa điểm danh bằng khuôn mặt, quản lý công việc, điểm danh và thống kê công việc, điểm danh của nhân viên.
 
-Đặc biệt, hệ thống được thiết kế **100% Serverless trên nền tảng AWS**, áp dụng kiến trúc **Event-Driven Microservices** để đảm bảo tính mở rộng cao, chi phí thấp và khả năng vận hành bền bỉ.
+Đặc biệt, hệ thống được thiết kế **100% Serverless trên nền tảng AWS**, áp dụng kiến trúc Event-Driven Microservices để đảm bảo tính mở rộng cao, chi phí thấp và khả năng vận hành bền bỉ.
 
 ## 2. Vấn đề cần giải quyết
 Hệ thống giải quyết các bài toán nhức nhối trong quản lý truyền thống:
@@ -22,12 +22,12 @@ Hệ thống giải quyết các bài toán nhức nhối trong quản lý truy�
 - **Tự động hóa & Chính xác:** Ứng dụng AI nhận diện khuôn mặt kết hợp hàng rào IP (IP Whitelisting) để điểm danh nhanh chóng, chính xác tuyệt đối và chống gian lận.
 - **Tập trung hóa dữ liệu (Data Lake):** Xây dựng một đường ống dữ liệu (Analytics Pipeline) thu thập hàng ngàn luồng sự kiện để phục vụ phân tích báo cáo thời gian thực.
 - **Tối ưu chi phí 100%:** Ứng dụng triệt để kiến trúc Serverless (trả tiền theo mỗi lần gọi API), đảm bảo chi phí bằng 0 khi không có người sử dụng.
-- **Bảo mật theo tiêu chuẩn đám mây:** Phân quyền chặt chẽ (RBAC) và bảo vệ dữ liệu nhạy cảm bằng hệ thống Firewall và Token.
+- **Bảo mật theo tiêu chuẩn đám mây:** Phân quyền chặt chẽ (RBAC) và bảo vệ dữ liệu nhạy cảm bằng hệ thống Firewall.
 
 ## 4. Các luồng nghiệp vụ và Kiến trúc giải pháp
 
 > **[SƠ ĐỒ KIẾN TRÚC TỔNG THỂ]**
-> <!-- TODO: Khi vẽ xong sơ đồ kiến trúc, hãy chèn ảnh vào đây bằng cú pháp: ![Sơ đồ kiến trúc](/images/architecture.png) -->
+> ![Sơ đồ kiến trúc](/aws-image/AwsArchitecture.drawio.png)
 
 Hệ thống được thiết kế dựa trên kiến trúc **Event-Driven Microservices** và ứng dụng hơn 15 dịch vụ đám mây của AWS. Dưới đây là chi tiết 6 luồng nghiệp vụ cốt lõi và cách các dịch vụ AWS phối hợp giải quyết bài toán:
 
@@ -41,31 +41,32 @@ Hệ thống được thiết kế dựa trên kiến trúc **Event-Driven Micro
 
 ### 4.3. Luồng Điểm danh Thông minh
 - **Nghiệp vụ:** Quá trình check-in/check-out được thực hiện bằng cách đưa khuôn mặt qua camera. Hệ thống tự động so khớp, kiểm tra khung giờ hợp lệ, và đối chiếu xem nhân viên có đang sử dụng đúng IP của văn phòng hay không (chống fake GPS/VPN).
-- **Dịch vụ AWS:**
+- **Dịch vụ AWS:** 
   - **AWS WAF (Web Application Firewall):** Chặn các request điểm danh đến từ ngoài mạng công ty (IP Whitelisting).
   - **Amazon Rekognition:** Gọi hàm `SearchFacesByImage` để đối chiếu độ trùng khớp (Confidence > 95%).
   - **Amazon API Gateway & AWS Lambda:** API Gateway tiếp nhận request từ Frontend, chuyển cho Lambda (chạy FastAPI) xử lý logic và lưu trạng thái vào **Amazon DynamoDB**.
 
 ### 4.4. Luồng Xử lý Sự kiện & Thông báo
 - **Nghiệp vụ:** Khi một nhân viên điểm danh thành công hoặc bị giao việc mới, hệ thống tự động đẩy thông báo đa kênh cho người liên quan mà không làm chậm trải nghiệm của người dùng.
-- **Dịch vụ AWS:**
+- **Dịch vụ AWS:** 
   - **Amazon EventBridge:** Nhận sự kiện (ví dụ `AttendanceRecorded`) và phân luồng (Routing).
   - **Amazon SQS:** Làm hàng đợi hứng sự kiện từ EventBridge, gửi cho Lambda Background Worker.
   - **Amazon SNS & Amazon SES:** Gửi Push Notification, SMS (SNS) và Email (SES) tới cấp quản lý.
 
 ### 4.5. Luồng Quản lý Công việc
-- **Nghiệp vụ:** Phân công công việc (Task) với thời hạn nghiêm ngặt (Deadline) và xử lý quy trình xin nghỉ phép. Quản lý có thể đính kèm tài liệu mật vào task.
+- **Nghiệp vụ:** Phân công công việc (Task) với thời hạn nghiêm ngặt (Deadline) và xử lý quy trình xin nghỉ phép (Leave Request). Quản lý có thể đính kèm tài liệu mật vào task.
 - **Dịch vụ AWS:**
   - **Amazon DynamoDB:** Lưu cấu trúc dữ liệu Tasks và Leaves với các Global Secondary Index (GSI) để truy vấn nhanh.
   - **Amazon S3 Pre-signed URL:** Sinh link động có thời hạn để tải tài liệu mật đính kèm, ngăn chặn rò rỉ dữ liệu.
   - **Amazon EventBridge (Cronjob):** Chạy lịch trình định kỳ mỗi 30 phút để quét và cảnh báo các Task quá hạn.
 
 ### 4.6. Luồng Phân tích Dữ liệu lớn
-- **Nghiệp vụ:** Thu thập log điểm danh khổng lồ từ các khuôn viên, gom nhóm dữ liệu để Giám đốc có thể xem Báo cáo hiệu suất (Dashboard) so sánh giữa các phòng ban.
+- **Nghiệp vụ:** Thu thập log điểm danh khổng lồ từ các khuôn viên, gom nhóm dữ liệu để Giám đốc có thể xem Báo cáo hiệu suất so sánh giữa các phòng ban.
 - **Dịch vụ AWS:**
-  - **Amazon Kinesis Data Firehose:** Nhận stream log điểm danh, tự động chia folder theo ngày tháng (Dynamic Partitioning) và lưu thành file lớn xuống **S3 Data Lake**.
+  - **Amazon Kinesis Data Firehose:** Nhận stream log điểm danh, tự động chia folder theo ngày tháng và lưu thành file lớn xuống **S3 Data Lake**.
   - **AWS Glue (Data Catalog):** Tự động thu thập cấu trúc (Schema) của các file JSON trên S3.
   - **Amazon Athena:** Động cơ truy vấn SQL Serverless, đọc trực tiếp dữ liệu từ S3 qua Glue Catalog để trả về kết quả thống kê siêu tốc cho Frontend.
+
 
 ### 4.7. Bảng Liệt Kê Các Dịch Vụ AWS Cốt Lõi
 Dưới đây là bảng tổng hợp các dịch vụ AWS được ứng dụng trong sơ đồ kiến trúc:
@@ -76,31 +77,31 @@ Dưới đây là bảng tổng hợp các dịch vụ AWS được ứng dụng
 | 2 | **AWS WAF** | Tường lửa bảo vệ điểm danh, chặn các IP không thuộc văn phòng. | Ngăn chặn gian lận điểm danh từ xa, chống các đợt tấn công Web và Spam request. |
 | 3 | **Amazon S3** | **Bucket 1:** Lưu trữ Frontend. <br> **Bucket 2:** Lưu trữ ảnh khuôn mặt & tài liệu bảo mật. <br> **Bucket 3:** S3 Data Lake lưu log. | Chi phí lưu trữ rẻ, độ tin cậy 99.999999999%. Hỗ trợ S3 Presigned URL ẩn file bảo mật. Tích hợp tốt với Athena. |
 | 4 | **Amazon API Gateway** | Cổng giao tiếp RESTful/HTTP API tiếp nhận request từ Frontend và gọi AWS Lambda. | Hỗ trợ Rate Limiting, tích hợp sẵn xác thực JWT qua Cognito Authorizer mà không cần code. |
-| 5 | **AWS Lambda** | **API Handler:** Xử lý logic API. <br> **Workers:** Xử lý Event chạy nền. | Mô hình Serverless Pay-As-You-Go (chỉ trả tiền khi code chạy). Tự động scale tức thì, không quản lý server. |
+| 5 | **AWS Lambda** | **API Handler:** Xử lý logic API. <br> **Workers:** Xử lý Event chạy nền. | Mô hình Serverless Pay-As-You-Go . Tự động scale tức thì, không quản lý server. |
 | 6 | **Amazon DynamoDB** | Lưu trữ toàn bộ dữ liệu nghiệp vụ (Users, Tasks, Leaves, Attendance). | Database NoSQL Serverless, tốc độ phản hồi tính bằng mili-giây, linh hoạt với Global Secondary Index. |
 | 7 | **Amazon Cognito** | Quản lý User Pool, xác thực đăng nhập và cấp phát JWT Token. | Không phải tự build hệ thống Auth. Bảo mật cao, hỗ trợ bắt buộc đổi mật khẩu lần đầu đăng nhập. |
-| 8 | **Amazon EventBridge** | Event Bus định tuyến các sự kiện (ví dụ: `AttendanceRecorded`) và chạy Cronjob. | Tách rời các module (Decoupling) theo chuẩn Event-Driven, dễ dàng thêm nghiệp vụ mới. |
-| 9 | **Amazon SQS** | Hàng đợi tin nhắn (Queue) đứng trước các Worker. | Đảm bảo không mất dữ liệu khi có lỗi xảy ra. Tích hợp Dead Letter Queue (DLQ) để retry. |
+| 8 | **Amazon EventBridge** | Event Bus định tuyến các sự kiện (ví dụ: `AttendanceRecorded`) và chạy Cronjob. | Tách rời các module  theo chuẩn Event-Driven, dễ dàng thêm nghiệp vụ mới. |
+| 9 | **Amazon SQS** | Hàng đợi tin nhắn đứng trước các Worker. | Đảm bảo không mất dữ liệu khi có lỗi xảy ra. Tích hợp Dead Letter Queue (DLQ) để retry. |
 | 10 | **Amazon Rekognition** | So khớp khuôn mặt nhân viên qua camera khi check-in. | AI có sẵn siêu mạnh, không tốn thời gian train model. Độ chính xác cao (Confidence > 95%). |
-| 11 | **Amazon Kinesis Data Firehose, Glue & Athena** | Bộ ba pipeline gom log điểm danh trên S3, phân tích và truy vấn bằng SQL. | Batching file tự động để tiết kiệm phí S3/Athena. Tách bạch hệ thống OLTP và OLAP. |
-| 12 | **AWS SAM (Serverless Application Model)** | Framework Infrastructure-as-Code để định nghĩa, build và triển khai toàn bộ stack Serverless (Lambda, API Gateway, DynamoDB, ...) qua một file `template.yaml`. | Đơn giản hóa triển khai với local testing (`sam local invoke`), đóng gói tự động, và tái tạo môi trường nhất quán. Không tốn chi phí server CI/CD riêng. |
+| 11 | **Glue & Athena** | Bộ đôi Glue & Athena pipeline gom log điểm danh trên S3, phân tích và truy vấn bằng SQL. | Batching file tự động để tiết kiệm phí S3/Athena. Tách bạch hệ thống OLTP và OLAP. |
+| 12 | **AWS CodeBuild & CodePipeline** | Thiết lập CI/CD Pipeline tự động build Frontend và đóng gói Lambda Backend. | Triển khai liên tục một cách hoàn toàn tự động từ source code. Đảm bảo an toàn và nhất quán giữa các lần release. |
 
 ### 4.8. Đánh giá Kiến trúc theo 5 Trụ cột AWS Well-Architected Framework
 Toàn bộ kiến trúc của Smart Campus Platform được thiết kế tuân thủ nghiêm ngặt 5 trụ cột của AWS Well-Architected Framework:
 
-1. **Operational Excellence:** Quản lý toàn bộ vòng đời ứng dụng qua **AWS SAM** Infrastructure-as-Code (`template.yaml`), cho phép triển khai lặp lại, có kiểm soát phiên bản. Giám sát tập trung log và các luồng sự kiện qua Amazon CloudWatch để phát hiện sớm điểm nghẽn.
-2. **Security:** Thực thi nguyên tắc Đặc quyền tối thiểu qua các IAM Roles cụ thể cho từng hàm Lambda. Ẩn tài liệu đính kèm nhạy cảm bằng S3 Pre-signed URL, mã hóa kết nối bằng HTTPS/TLS của CloudFront, và bảo vệ cổng API bằng AWS WAF kết hợp Cognito JWT Authorizer.
-3. **Reliability:** Đảm bảo tính khả dụng liên tục nhờ kiến trúc Multi-AZ mặc định của hệ sinh thái Serverless. Cơ chế Retry tự động và đẩy tin nhắn lỗi vào Dead-Letter Queue (DLQ) của Amazon SQS giúp ngăn ngừa mất mát log điểm danh.
-4. **Performance Efficiency:** Phân phối ứng dụng Frontend tĩnh mượt mà qua các Edge locations của CloudFront. Tối ưu thời gian đọc/ghi dữ liệu ở mức mili-giây với DynamoDB, đồng thời giải tải cho hệ thống OLTP chính bằng cách đẩy dữ liệu truy vấn lớn sang luồng Data Lake (Firehose & Athena).
-5. **Cost Optimization:** Áp dụng triệt để mô hình 100% Serverless Event-Driven (chỉ trả tiền khi hệ thống được gọi). Thiết lập S3 Lifecycle Rules để tự động hạ tầng lưu trữ (chuyển log cũ sang Glacier), tối thiểu hóa chi phí lưu trữ lạnh.
+1. **Vận hành xuất sắc:** Quản lý toàn bộ vòng đời ứng dụng tự động bằng kịch bản CI/CD (CodeBuild/CodePipeline). Giám sát tập trung log và các luồng sự kiện qua Amazon CloudWatch để phát hiện sớm điểm nghẽn.
+2. **Bảo mật:** Thực thi nguyên tắc Đặc quyền tối thiểu qua các IAM Roles cụ thể cho từng hàm Lambda. Ẩn tài liệu đính kèm nhạy cảm bằng S3 Pre-signed URL, mã hóa kết nối bằng HTTPS/TLS của CloudFront, và bảo vệ cổng API bằng AWS WAF kết hợp Cognito JWT Authorizer.
+3. **Độ tin cậy:** Đảm bảo tính khả dụng liên tục nhờ kiến trúc Multi-AZ mặc định của hệ sinh thái Serverless. Cơ chế Retry tự động và đẩy tin nhắn lỗi vào Dead-Letter Queue (DLQ) của Amazon SQS giúp ngăn ngừa mất mát log điểm danh.
+4. **Hiệu năng:** Phân phối ứng dụng Frontend tĩnh mượt mà qua các Edge locations của CloudFront. Tối ưu thời gian đọc/ghi dữ liệu ở mức mili-giây với DynamoDB, đồng thời giải tải cho hệ thống OLTP chính bằng cách đẩy dữ liệu truy vấn lớn sang luồng Data Lake.
+5. **Tối ưu chi phí:** Áp dụng triệt để mô hình 100% Serverless Event-Driven. Thiết lập S3 Lifecycle Rules để tự động hạ tầng lưu trữ, tối thiểu hóa chi phí lưu trữ lạnh.
 
 ## 5. Timeline dự kiến
 | Tuần | Hạng mục công việc |
 | :--- | :--- |
-| **Tuần 5** | **Nền tảng & IaC:** Viết file AWS SAM `template.yaml` cho toàn bộ stack (Lambda, API Gateway, DynamoDB, Cognito, S3, CloudFront, WAF). Triển khai hạ tầng ban đầu. Xây dựng khung Backend API (FastAPI) với các mô hình DynamoDB. |
-| **Tuần 6** | **Xác thực, AI & Sự kiện:** Tích hợp Cognito JWT auth. Triển khai Rekognition đăng ký khuôn mặt & điểm danh thông minh. Thiết lập EventBridge + SQS + SNS/SES cho luồng thông báo theo sự kiện. |
-| **Tuần 7** | **Frontend & Nghiệp vụ:** Xây dựng giao diện ReactJS/Vite Frontend. Triển khai API Quản lý công việc và nghỉ phép. Cấu hình S3 Pre-signed URL cho tài liệu đính kèm bảo mật. Thiết lập EventBridge Cronjob cảnh báo task quá hạn. |
-| **Tuần 8** | **Phân tích, Kiểm thử & Tối ưu:** Xây dựng Data Lake Pipeline (Firehose → S3 → Glue → Athena). Chạy kiểm thử tự động end-to-end. Tối ưu hiệu năng bằng X-Ray. Hoàn thiện triển khai SAM, viết tài liệu và chuẩn bị demo. |
+| **Tuần 1-2** | Phân tích yêu cầu, thiết kế kiến trúc hệ thống. Thiết lập mạng AWS, CloudFront, WAF, S3 tĩnh. Xây dựng Frontend ReactJS cơ bản. |
+| **Tuần 3-4** | Xây dựng Backend API trên AWS Lambda và DynamoDB. Tích hợp Cognito và Rekognition cho tính năng điểm danh bằng khuôn mặt. |
+| **Tuần 5-6** | Thiết kế Event-Driven Architecture với EventBridge và SQS. Xây dựng Data Lake Pipeline phục vụ Báo cáo Analytics. |
+| **Tuần 7-8** | Tích hợp CI/CD (CodeBuild, CodePipeline), Automation Testing, hoàn thiện luồng Gửi thông báo (SNS/SES), tổng kết và viết báo cáo. |
 
 ## 6. Ước Tính Ngân Sách Hàng Tháng
 Dự toán ngân sách được tính dựa trên quy mô vận hành thực tế tại 1 khuôn viên vừa: **200 nhân viên, mỗi người điểm danh trung bình từ 1 đến 4 lượt/ngày** (sáng đến, trưa đi ăn, chiều quay lại, tối về). Tổng cộng hệ thống sẽ xử lý khoảng **20.000 lượt điểm danh/tháng** và khoảng **150.000 API requests/tháng** (bao gồm cả giao việc, báo cáo, nghỉ phép).
@@ -120,20 +121,19 @@ Dự toán ngân sách được tính dựa trên quy mô vận hành thực t�
 | **Amazon Rekognition** | 20,000 lần quét ảnh đối chiếu khuôn mặt (SearchFacesByImage) | $0.001 / Ảnh quét | **$20.00** |
 | **Amazon Firehose & Athena** | ~1GB Data Ingestion & Scanned by Athena query | $0.03/GB Ingestion + $5.00/TB Scanned | **$0.04** |
 | **Amazon CloudWatch** | 1GB Ingestion Logs + 3 Custom Metrics | $0.57 / GB Logs | **$1.47** |
-| **AWS SAM** | Công cụ triển khai Infrastructure-as-Code | Miễn phí (chỉ trả phí tài nguyên nền được tạo ra) | **$0.00** |
-| **TỔNG CỘNG** | **Chi phí vận hành mô hình Smart Campus (200 Users)** | | **~ $32.98 / tháng** |
+| **AWS CodeBuild & CodePipeline** | ~100 phút build (linux-small) + 1 Active Pipeline | $0.005 / phút + $1.00/Pipeline | **$1.50** |
+| **TỔNG CỘNG** | **Chi phí vận hành mô hình Smart Campus (200 Users)** | | **~ $34.48 / tháng** |
 
 ### 6.1. Chiến Lược Tối Ưu Chi Phí
 Mặc dù chi phí vận hành cơ bản đã rất thấp, hệ thống vẫn áp dụng thêm các chiến lược tối ưu chuyên sâu:
 1. **Mô hình Pure Serverless Pay-As-You-Go:** Sử dụng AWS Lambda và **API Gateway HTTP API** (rẻ hơn 71% so với REST API) giúp hệ thống không tốn bất kỳ chi phí duy trì máy chủ nào trong khung giờ ban đêm hoặc cuối tuần.
-2. **Infrastructure-as-Code với AWS SAM:** Sử dụng **AWS SAM** thay cho các pipeline CI/CD quản lý (CodeBuild/CodePipeline) giúp loại bỏ chi phí server build chuyên dụng. SAM hoàn toàn miễn phí — bạn chỉ trả phí cho các tài nguyên nền được triển khai.
-3. **S3 Lifecycle Rules & Firehose Compression:** Cấu hình tự động nén log điểm danh thành định dạng Parquet qua Firehose và chuyển các log cũ hơn 90 ngày sang **S3 Glacier Flexible Retrieval** giúp giảm 85% chi phí lưu trữ dài hạn.
-4. **Sử dụng SQS Long Polling:** Cấu hình `ReceiveMessageWaitTimeSeconds = 20` giúp giảm thiểu lượng request rỗng (Empty Receive Requests) tới SQS, tiết kiệm đáng kể chi phí gọi API.
-5. **AWS Lambda Power Tuning:** Thực hiện dò tìm mức RAM tối ưu nhất để cân bằng giữa tốc độ phản hồi (Latency) và chi phí thực thi, đảm bảo Lambda không bị cấp dư thừa bộ nhớ gây lãng phí.
+2. **S3 Lifecycle Rules & Firehose Compression:** Cấu hình tự động nén log điểm danh thành định dạng Parquet qua Firehose và chuyển các log cũ hơn 90 ngày sang **S3 Glacier Flexible Retrieval** giúp giảm 85% chi phí lưu trữ dài hạn.
+3. **Sử dụng SQS Long Polling:** Cấu hình `ReceiveMessageWaitTimeSeconds = 20` giúp giảm thiểu lượng request rỗng (Empty Receive Requests) tới SQS, tiết kiệm đáng kể chi phí gọi API.
+4. **AWS Lambda Power Tuning:** Thực hiện dò tìm mức RAM tối ưu nhất để cân bằng giữa tốc độ phản hồi (Latency) và chi phí thực thi, đảm bảo Lambda không bị cấp dư thừa bộ nhớ gây lãng phí.
 
 ## 7. Đánh giá Rủi ro & Biện pháp giảm thiểu
 
-| STT | LOẠI RỦI RO | PHÂN TÍCH CHI TIẾT RỦI RO | MỨC ĐỘ | BIỆN PHÁP GIẢM THIỂU (MITIGATION STRATEGY) |
+| STT | LOẠI RỦI RO | PHÂN TÍCH CHI TIẾT RỦI RO | MỨC ĐỘ | BIỆN PHÁP GIẢM THIỂU |
 | :---: | :--- | :--- | :---: | :--- |
 | 1 | **Hiệu Năng** | **Nghẽn cổ chai API hoặc Cold Start Lambda:** Khi hàng trăm nhân viên ùa vào điểm danh cùng lúc lúc 8h00 sáng, độ trễ Lambda có thể tăng cao (Cold Start). | **HIGH** | - Thiết lập **Provisioned Concurrency** cho các hàm Lambda quan trọng vào khung giờ cao điểm.<br>- Sử dụng SQS làm vùng đệm (Buffer) để hấp thụ lượng traffic đột biến, xử lý bất đồng bộ. |
 | 2 | **Bảo Mật** | **Tấn công Spam API / Gian lận:** Kẻ xấu liên tục gửi request rác làm cạn kiệt ngân sách AWS (Financial Exhaustion) hoặc dùng hình ảnh giả mạo. | **CRITICAL** | - Bật **AWS WAF** kết hợp Rate Limiting và chặn IP lạ.<br>- Yêu cầu xác thực JWT qua Cognito Authorizer trước khi xử lý.<br>- Phân quyền cực hạn (Least Privilege) cho từng Role Lambda. |

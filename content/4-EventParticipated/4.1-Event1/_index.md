@@ -1,126 +1,110 @@
 ---
-title: "Event 1"
-date: 2024-01-01
+title: "​3-Day AgentForge Workshop Agenda - Deepdive day 2"
+date: 2026-08-08
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+# Report: AWS AgentForge – Agent Core in Production
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+**Event:** Offline workshop + Hands-on Lab, 08/08/2026  
+**Role:** Participant
 
-### Event Objectives
+---
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+## 1. Cloud/AI Career Orientation
 
-### Speakers
+**T-Shaped Skills** model:
+- **Year 1 – Depth:** Go deep into one core specialty (serverless, data pipeline, model deployment).
+- **Year 2–3 – Breadth:** Expand into production environments and build **domain knowledge** (EdTech, HealthTech, FinTech).
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+AWS certifications are *necessary* but not *sufficient* — solving real business problems is what keeps you in the job.  
+Communication with non-technical stakeholders is a survival skill.  
+Join **Hackathons** to turn theory into working products.
 
-### Key Highlights
+---
 
-#### Identifying the drawbacks of legacy application architecture
+## 2. Agent Core Architecture
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+| | Chatbot | AI Agent |
+|---|---|---|
+| Output | Text only | Executes real actions |
+| Capability | Q&A | Autonomous planning & acting |
+| Tools | None | Calls external Tools |
+| State | Stateless | Short-term & long-term Memory |
 
-#### Transitioning to modern application architecture – Microservices
+**Cognition loop:** `Reasoning` → `Thinking` → `Tool Use`. The Agent decides which tool to call and when — no hard-coded steps.
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+---
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+## 3. Memory
 
-#### Domain-Driven Design (DDD)
+- **Short-term Memory:** Stores raw text within a session, processed **synchronously** — instant response but burns context window.
+- **Long-term Memory:** **Memory Extraction** module runs **asynchronously** in the background, auto-extracts insights from chat and persists them.
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+**Trade-off:** Detailed storage → better recall but costs more tokens. Summarized storage → cheaper but may lose information.
 
-#### Event-Driven Architecture
+---
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
+## 4. Observability
 
-#### Compute Evolution
+Solving the "black box" problem:
+- **Logging:** Records interactions and tool parameters.
+- **Tracing:** Tracks the full request lifecycle to answer "why did the Agent respond that way?".
+- **Metrics & Alerting:** Monitors latency, resources, traffic; connects to auto-scaling for traffic spikes.
 
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
+---
 
-#### Amazon Q Developer
+## 5. Evaluation
 
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+Compare **Predicted Response** (AI-generated) against **Ground Truth** (human-authored reference) for quantitative metrics.
 
-### Key Takeaways
+Cannot be 100% automated. **SMEs** must validate business accuracy, especially in healthcare and finance.
 
-#### Design Mindset
+---
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+## 6. Policy & Security
 
-#### Technical Architecture
+- **Cedar Language:** Centralized declarative policy language for defining Agent permissions.
+- **Permissive Mode:** Dev only.
+- **Strict Mode:** Mandatory in production — enforces **Least Privilege**, prevents data leaks and destructive actions from prompt injection.
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
+---
 
-#### Modernization Strategy
+## 7. Extending Agent Capabilities with Tools
 
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+| Tool | Function |
+|---|---|
+| **Browser** | Access real-time internet data |
+| **Code Interpreter** | Run code in a sandbox for calculations, charts |
+| **Payment Integration** | Call payment APIs, turning the Agent into an autonomous sales assistant |
 
-### Applying to Work
+---
 
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+## 8. Hands-on Lab: Refund Assistant
 
-### Event Experience
+**Stack:** Agent CLI + Node.js + AWS CDK (serverless deployment via CloudFormation).  
+Pay-per-invoke, zero cost when idle.
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+Flow: user requests refund → tool looks up order → checks conditions → responds.  
+**Mock Data** embedded in the System Prompt for fast logic testing, no real DB needed early on.  
+**Log** kept local (dev debug), **Trace** sent to cloud observability (production monitoring).
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+---
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+## Key Takeaways
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+1. **Production Agent ≠ Demo Agent.** 30% is building, 70% is Memory, Observability, Evaluation, Security, and auto-scaling.
+2. **Two-tier Memory:** Short-term sync (speed), long-term async (no UX slowdown).
+3. **Log ≠ Trace:** Log tells you *what* happened, Trace tells you *the sequence and timing*.
+4. No **Ground Truth** = blind gambling every time you tweak a prompt.
+5. **Permissive** for dev, **Strict** for survival. Strict Mode check is mandatory before every release.
+6. **Memory Strategy** directly impacts the token bill. Serverless is cheap for PoCs and low-traffic workloads.
+7. **Career:** Depth first, breadth later. Certifications get you in, products keep you in.
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
-
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
-
-#### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+## Images proving participation
+![Images proving participation](/images/4-EventParticipated/event-1/event1-1.jpg)
+![Images proving participation](/images/4-EventParticipated/event-1/event1-2.jpg)
+![Images proving participation](/images/4-EventParticipated/event-1/event1-3.jpg)
+![Images proving participation](/images/4-EventParticipated/event-1/event1-4.jpg)

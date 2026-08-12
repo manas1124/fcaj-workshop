@@ -1,57 +1,35 @@
 ---
-title: "Week 8 Worklog"
-date: 2024-01-01
+title: "Week 8: Project Summary & Report Writing"
+date: 2026-08-10
 weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
+
+## 1. Weekly Goals
+Complete technical documentation, record demo video, and write the final internship report.
+
+## 2. Detailed Work Log
+
+| Day | Task Description | Start Date | End Date | References |
+|---|---|---|---|---|
+| Mon | - Perform End-to-End Testing on the entire system.<br>- Fix final bugs before handover. | 10/08/2026 | 10/08/2026 | AWS Docs |
+| Tue | - Compile technical documentation: Architecture, API Docs, Database Schema. | 11/08/2026 | 11/08/2026 | AWS Docs |
+| Wed | - Record demo video showcasing the main flows of Smart Campus. | 12/08/2026 | 12/08/2026 | AWS Blogs |
+| Thu | - Draft the internship report: introduction, architecture, results, future directions. | 13/08/2026 | 13/08/2026 | Weekly Report |
+| Fri | - Finalize report and prepare for submission. | 14/08/2026 | 14/08/2026 | Weekly Report |
 
 
-### Week 8 Objectives:
+## 3. Achievements
+- Successfully performed End-to-End Testing on the entire system and fixed final bugs before handover.
+- Successfully compiled technical documentation: Architecture, API Docs, Database Schema.
+- Successfully recorded demo video showcasing the main flows of Smart Campus.
+- Successfully drafted the internship report including introduction, architecture, results, and future directions.
+- Completed technical documentation, demo video, and final internship report.
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+## 4. Challenges & Solutions
+- **Challenges:** The research and integration process occasionally encountered unexpected errors. Required significant time reading logs and AWS technical documentation.
+- **Solutions:** Coordinated with other team members for discussions, thoroughly read the guidelines, and sought additional advice from Mentors.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
-
-### Week 8 Achievements:
-
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+## 5. Plan for Next Week
+- Final review and prepare for project defense.

@@ -1,92 +1,37 @@
 ---
-title: "Worklog Tuần 2"
+title: "Tuần 2: Thiết kế Kiến trúc AWS"
 date: 2026-06-29
 weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
 
-### Mục tiêu tuần 2
+## 1. Mục tiêu công việc
+Brainstorm và chốt đề tài cuối kỳ: Smart Campus Platform. Phân tích yêu cầu nghiệp vụ, chọn AWS service cho từng module, thiết kế sơ đồ kiến trúc tổng thể và data flow trên draw.io, thiết kế Database Schema và wireframe cơ bản trên Figma, phân công vai trò từng thành viên.
 
-* Tìm hiểu các dịch vụ lưu trữ và cơ sở dữ liệu trên AWS.
-* Hiểu sự khác nhau giữa Object Storage, Block Storage và Relational Database.
-* Thực hành sử dụng Amazon S3, Amazon EBS và Amazon RDS.
-* Xây dựng hệ thống upload file đơn giản sử dụng Amazon S3.
+## 2. Nhật ký công việc chi tiết
 
----
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+|---|---|---|---|---|
+| 2 | - Brainstorm & chốt đề tài cuối kỳ.<br>- Chốt đề tài: Smart Campus Platform. | 29/06/2026 | 29/06/2026 | |
+| 3 | - Phân tích yêu cầu nghiệp vụ thực tế.<br>- Xác định các chức năng chính: Face Attendance, Task Management, v.v. | 30/06/2026 | 30/06/2026 | |
+| 4 | - Liệt kê các dịch vụ AWS sử dụng cho từng module (Frontend, Backend, AI, Storage).<br>- Phân công vai trò cho từng thành viên trong nhóm. | 01/07/2026 | 01/07/2026 | |
+| 5 | - Thiết kế sơ đồ kiến trúc tổng thể (Architecture Diagram) trên draw.io.<br>- Vẽ luồng đi của dữ liệu (Data flow). | 02/07/2026 | 02/07/2026 | draw.io |
+| 6 | - Thiết kế Database Schema trên Figma.<br>- Thiết kế Wireframe cơ bản trên Figma. | 03/07/2026 | 03/07/2026 | Figma |
 
-### Công việc thực hiện trong tuần
 
-| Thứ   | Công việc                                                                    | Ngày       |
-| ----- | ---------------------------------------------------------------------------- | ---------- |
-| Thứ 2 | Tìm hiểu Amazon S3, Bucket, Object, Storage Class và các trường hợp sử dụng. | 29/06/2026 |
-| Thứ 3 | Thực hành tạo Bucket, quản lý Object và cấu hình Lifecycle Policy.           | 30/06/2026 |
-| Thứ 4 | Nghiên cứu Amazon EBS, Snapshot và cách quản lý Block Storage cho EC2.       | 01/07/2026 |
-| Thứ 5 | Tìm hiểu Amazon RDS, khởi tạo cơ sở dữ liệu và kết nối từ ứng dụng.          | 02/07/2026 |
-| Thứ 6 | Xây dựng hệ thống upload file sử dụng Amazon S3 làm nơi lưu trữ.             | 03/07/2026 |
-| Thứ 7 | Kiểm thử chức năng upload, quản lý dữ liệu và tổng hợp kiến thức đã học.     | 04/07/2026 |
+## 3. Các kết quả đạt được
+- Đã chốt đề tài: Smart Campus Platform.
+- Hoàn thành phân tích yêu cầu nghiệp vụ (Face Attendance, Task Management, v.v.).
+- Đã chọn AWS service cho từng module (Frontend, Backend, AI, Storage).
+- Hoàn thành sơ đồ kiến trúc tổng thể và data flow trên draw.io.
+- Hoàn thành Database Schema và Wireframe cơ bản trên Figma.
+- Đã phân công vai trò cho từng thành viên.
 
----
+## 4. Khó khăn & Hướng giải quyết
+- **Khó khăn:** Quá trình tìm hiểu và tích hợp đôi lúc gặp lỗi không mong muốn. Cần nhiều thời gian đọc log và tài liệu kỹ thuật của AWS.
+- **Giải pháp:** Phối hợp cùng các thành viên khác trong nhóm để trao đổi, đọc kỹ tài liệu hướng dẫn và tham khảo thêm ý kiến của Mentor.
 
-### Nội dung đã thực hiện
-
-Trong tuần thứ hai, tôi tập trung nghiên cứu các dịch vụ lưu trữ và cơ sở dữ liệu phổ biến trên AWS.
-
-Đầu tiên, tôi tìm hiểu Amazon S3, bao gồm cách tổ chức dữ liệu theo Bucket và Object, các lớp lưu trữ (Storage Classes) cũng như cơ chế Lifecycle Policy nhằm tự động quản lý vòng đời dữ liệu và tối ưu chi phí lưu trữ.
-
-Tiếp theo, tôi nghiên cứu Amazon EBS để hiểu cách cung cấp Block Storage cho EC2 Instance, đồng thời thực hành tạo Snapshot nhằm phục vụ sao lưu và khôi phục dữ liệu.
-
-Sau đó, tôi tìm hiểu Amazon RDS, bao gồm quy trình khởi tạo cơ sở dữ liệu, cấu hình kết nối và các thao tác quản lý cơ bản.
-
-Cuối tuần, tôi thực hiện bài thực hành xây dựng hệ thống upload file đơn giản, trong đó Amazon S3 được sử dụng để lưu trữ tập tin và kiểm thử quá trình tải lên, truy cập cũng như quản lý dữ liệu.
-
----
-
-### Khó khăn gặp phải
-
-* Ban đầu chưa phân biệt rõ sự khác nhau giữa Amazon S3 và Amazon EBS.
-* Gặp khó khăn trong việc lựa chọn Storage Class phù hợp với từng trường hợp sử dụng.
-* Việc cấu hình quyền truy cập Bucket cần được tìm hiểu kỹ để tránh cấp quyền quá mức.
-* Quá trình kết nối tới Amazon RDS cần cấu hình đúng Security Group và Endpoint.
-
----
-
-### Cách giải quyết
-
-* Đọc tài liệu AWS Documentation và so sánh đặc điểm của từng dịch vụ lưu trữ.
-* Thực hành tạo nhiều Bucket và thử nghiệm các Storage Class khác nhau.
-* Tìm hiểu nguyên tắc Least Privilege khi cấu hình quyền truy cập S3.
-* Kiểm tra từng bước cấu hình mạng và Security Group khi kết nối RDS.
-
----
-
-### Kiến thức đạt được
-
-Sau tuần thứ hai, tôi đã:
-
-* Hiểu sự khác nhau giữa Object Storage, Block Storage và Relational Database.
-* Biết cách tạo và quản lý Amazon S3 Bucket.
-* Hiểu cơ chế hoạt động của Lifecycle Policy.
-* Biết cách tạo Snapshot cho Amazon EBS.
-* Hiểu quy trình triển khai và quản lý Amazon RDS.
-* Có khả năng xây dựng hệ thống upload file đơn giản sử dụng Amazon S3.
-
----
-
-### Kết quả đạt được
-
-* Tạo và quản lý thành công Amazon S3 Bucket.
-* Cấu hình Lifecycle Policy cho Bucket.
-* Thực hiện Snapshot cho Amazon EBS.
-* Khởi tạo và kết nối thành công Amazon RDS.
-* Hoàn thành hệ thống upload file sử dụng Amazon S3.
-* Tổng hợp tài liệu và ghi chú về các dịch vụ lưu trữ trên AWS.
-
----
-
-### Tài liệu tham khảo
-
-* AWS First Cloud Journey Learning Path.
-* AWS Documentation – Amazon S3.
-* AWS Documentation – Amazon EBS.
-* AWS Documentation – Amazon RDS.
+## 5. Kế hoạch tuần tiếp theo
+- Rà soát lại công việc của tuần này.
+- Bắt tay vào nghiên cứu và triển khai các nhiệm vụ của Tuần 3.

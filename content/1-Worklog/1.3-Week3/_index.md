@@ -1,92 +1,38 @@
 ---
-title: "Week 3 Worklog"
+title: "Week 3: Event-Driven Architecture (EventBridge)"
 date: 2026-07-06
 weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
 
-### Week 3 Objectives
+## 1. Weekly Goals
+Deploy the Event-Driven model to reduce synchronous processing load; simultaneously consolidate knowledge of VPC and network security (Security Groups, NACLs, Internet Gateway, NAT Gateway).
 
-* Learn AWS networking fundamentals.
-* Understand the role of Amazon VPC in cloud infrastructure.
-* Differentiate between Security Groups and Network ACLs.
-* Build a multi-tier network architecture on AWS.
+## 2. Detailed Work Log
 
----
+| Day | Task Description | Start Date | End Date | References |
+|---|---|---|---|---|
+| Mon | - Learn VPC, Security Groups, NACLs, Internet Gateway, NAT Gateway. | 06/07/2026 | 06/07/2026 | AWS Docs |
+| Tue | - Initialize Custom Event Bus (`smart-campus-bus`) on Amazon EventBridge. | 07/07/2026 | 07/07/2026 | AWS Docs |
+| Wed | - Build standardized JSON Event Schema (e.g., `AttendanceRecorded`) in coordination with Backend. | 08/07/2026 | 08/07/2026 | API Docs |
+| Thu | - Integrate boto3 into Backend to emit event to EventBridge immediately after recording attendance. | 09/07/2026 | 09/07/2026 | AWS Blogs |
+| Fri | - Define Event Rules to filter and route events.<br>- Check CloudWatch Logs to confirm successful event reception. | 10/07/2026 | 10/07/2026 | Weekly Report |
 
-### Weekly Tasks
 
-| Day       | Tasks                                                                                    | Date       |
-| --------- | ---------------------------------------------------------------------------------------- | ---------- |
-| Monday    | Study Amazon VPC, CIDR Blocks, Subnets and Route Tables.                                 | 06/07/2026 |
-| Tuesday   | Learn about Internet Gateway, Public Subnets and Private Subnets.                        | 07/07/2026 |
-| Wednesday | Explore NAT Gateway and Internet access for resources in Private Subnets.                | 08/07/2026 |
-| Thursday  | Compare Security Groups and Network ACLs, and configure network access rules.            | 09/07/2026 |
-| Friday    | Design and implement a multi-tier network architecture on AWS.                           | 10/07/2026 |
-| Saturday  | Test connectivity between network components and summarize the week's learning outcomes. | 11/07/2026 |
+## 3. Achievements
+- Gained knowledge of VPC, Security Groups, NACLs, Internet Gateway, and NAT Gateway.
+- Successfully initialized Custom Event Bus (`smart-campus-bus`) on Amazon EventBridge.
+- Successfully built standardized JSON Event Schema (e.g., `AttendanceRecorded`) in coordination with Backend.
+- Successfully integrated boto3 into Backend to emit events to EventBridge immediately after attendance is recorded.
+- Successfully defined Event Rules for filtering and routing events.
+- Verified successful event reception via CloudWatch Logs.
+- Deployed Event-Driven model, reducing synchronous processing load.
 
----
+## 4. Challenges & Solutions
+- **Challenges:** The research and integration process occasionally encountered unexpected errors. Required significant time reading logs and AWS technical documentation.
+- **Solutions:** Coordinated with other team members for discussions, thoroughly read the guidelines, and sought additional advice from Mentors.
 
-### Activities
-
-This week focused on AWS networking concepts and infrastructure design. I studied Amazon Virtual Private Cloud (VPC), including CIDR Blocks, Subnets and Route Tables, to understand how network environments are created and managed on AWS.
-
-I then explored Internet Gateway, Public Subnets and Private Subnets, followed by NAT Gateway to understand how private resources can securely access the Internet.
-
-In addition, I compared Security Groups and Network ACLs by configuring different inbound and outbound traffic rules.
-
-Finally, I designed and implemented a multi-tier network architecture consisting of isolated network layers and verified communication between the deployed resources.
-
----
-
-### Challenges
-
-* Understanding the relationship between VPCs, Subnets and Route Tables.
-* Distinguishing between Security Groups and Network ACLs.
-* Designing appropriate CIDR Blocks without IP address overlap.
-* Understanding routing behavior through NAT Gateway.
-
----
-
-### Solutions
-
-* Drew network diagrams to visualize traffic flow.
-* Practiced deploying multiple VPC and Subnet configurations.
-* Compared Security Groups and Network ACLs through hands-on exercises.
-* Reviewed AWS Documentation and the AWS Well-Architected Framework.
-
----
-
-### Knowledge Gained
-
-After completing Week 3, I was able to:
-
-* Understand the role of Amazon VPC in AWS networking.
-* Design CIDR Blocks and Subnets.
-* Configure Route Tables for traffic routing.
-* Understand the differences between Internet Gateway and NAT Gateway.
-* Configure Security Groups and Network ACLs appropriately.
-* Build a secure multi-tier network architecture.
-
----
-
-### Deliverables
-
-* Amazon VPC successfully configured.
-* Public and Private Subnets deployed.
-* Internet Gateway and NAT Gateway configured.
-* Security Groups and Network ACLs implemented.
-* Multi-tier network architecture completed.
-* Documentation summarizing AWS networking concepts.
-
----
-
-### References
-
-* AWS First Cloud Journey Learning Path.
-* AWS Documentation – Amazon VPC.
-* AWS Documentation – Security Groups.
-* AWS Documentation – Network ACLs.
-* AWS Documentation – NAT Gateway.
-* AWS Well-Architected Framework.
+## 5. Plan for Next Week
+- Review this week's completed work.
+- Begin research and implementation of tasks for Week 4.
