@@ -1,5 +1,5 @@
 ---
-title: "Tuần 8: Tổng kết dự án & Viết Báo Cáo"
+title: "Worklog tuần 8"
 date: 2026-08-10
 weight: 8
 chapter: false

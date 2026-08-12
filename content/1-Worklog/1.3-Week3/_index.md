@@ -1,5 +1,5 @@
 ---
-title: "Week 3: Event-Driven Architecture (EventBridge)"
+title: "Week 3: Worklog"
 date: 2026-07-06
 weight: 3
 chapter: false

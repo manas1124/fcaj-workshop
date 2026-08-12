@@ -1,5 +1,5 @@
 ---
-title: "Tuần 4: Cấu hình Hàng đợi SQS & Thông báo (SES)"
+title: "Worklog tuần 4"
 date: 2026-07-13
 weight: 4
 chapter: false

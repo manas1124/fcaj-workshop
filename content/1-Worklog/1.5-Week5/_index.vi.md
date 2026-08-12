@@ -1,5 +1,5 @@
 ---
-title: "Tuần 5: Broadcasting (SNS) & Lập lịch Cronjob"
+title: "Worklog tuần 5"
 date: 2026-07-20
 weight: 5
 chapter: false

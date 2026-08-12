@@ -1,5 +1,5 @@
 ---
-title: "Week 6: System Security with AWS WAF"
+title: "Week 6: Worklog"
 date: 2026-07-27
 weight: 6
 chapter: false

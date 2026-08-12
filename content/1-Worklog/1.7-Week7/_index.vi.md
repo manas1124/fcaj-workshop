@@ -1,5 +1,5 @@
 ---
-title: "Tuần 7: Giám sát & Tự động hóa CI/CD"
+title: "Worklog tuần 7"
 date: 2026-08-03
 weight: 7
 chapter: false

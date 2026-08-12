@@ -1,5 +1,5 @@
 ---
-title: "Tuần 3: Kiến trúc Event-Driven (EventBridge)"
+title: "Worklog tuần 3"
 date: 2026-07-06
 weight: 3
 chapter: false

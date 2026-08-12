@@ -1,5 +1,5 @@
 ---
-title: "Tuần 6: Bảo mật Hệ thống với AWS WAF"
+title: "Worklog tuần 6"
 date: 2026-07-27
 weight: 6
 chapter: false

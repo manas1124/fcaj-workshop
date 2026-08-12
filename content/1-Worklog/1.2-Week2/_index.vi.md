@@ -1,5 +1,5 @@
 ---
-title: "Tuần 2: Thiết kế Kiến trúc AWS"
+title: "Worklog tuần 2"
 date: 2026-06-29
 weight: 2
 chapter: false
