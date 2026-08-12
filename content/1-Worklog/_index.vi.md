@@ -1,5 +1,5 @@
 ---
-title: "Giới thiệu"
+title: "Nhật ký làm việc"
 date: 2026-06-22
 weight: 1
 chapter: false
