@@ -1,12 +1,12 @@
 ---
-title: "​3-Day AgentForge Workshop Agenda - Deepdive day 2"
+title: "Event 1"
 date: 2026-08-08
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-# Report: AWS AgentForge – Agent Core in Production
+# Report: AWS AgentForge Deepdive Day 2 – Advanced Amazon Bedrock AgentCore
 
 **Event:** Offline workshop + Hands-on Lab, 08/08/2026  
 **Role:** Participant
