@@ -107,21 +107,21 @@ The budget estimation is calculated based on the actual operating scale of a med
 
 To prove the optimization of Serverless, the estimate below is calculated **based on raw pricing (Pay-As-You-Go)** and does not rely on the AWS 12-month Free Tier package.
 
-| AWS SERVICE | EXPECTED MONTHLY USAGE | REFERENCE PRICE (AP-SOUTHEAST-1) | MONTHLY COST (USD) |
-| :--- | :--- | :--- | :---: |
-| **AWS Lambda** | 150,000 API Requests + 40,000 Worker executions (Memory: 512MB, Avg: 1s) | $0.20 / 1M Requests + Compute time | **$1.62** |
-| **Amazon API Gateway** | 150,000 HTTP API calls | $1.00 / 1M Requests | **$0.15** |
-| **Amazon SQS** | 50,000 SQS Requests (Send & Receive) | $0.40 / 1M Requests | **$0.02** |
-| **Amazon DynamoDB** | 500,000 WCU, 500,000 RCU (On-Demand Mode) + 2GB Storage | $1.25 / 1M WCU, $0.25 / 1M RCU + $0.25/GB | **$1.26** |
-| **Amazon S3** | ~5GB Storage (Frontend, Images, Data Lake) + 100k GET/PUT | $0.025 / GB Storage + $0.004 / 1k PUT | **$0.53** |
-| **Amazon CloudFront** | 20GB Data Transfer Out + 200k HTTPS Requests | $0.09 / GB | **$1.80** |
-| **AWS WAF** | 1 Web ACL + 1 Rule (IP Match) + 150k Requests | $5.00/Web ACL + $1.00/Rule + $0.60/1M Req | **$6.09** |
-| **Amazon Cognito** | Under 1,000 MAU (Monthly Active Users) | Free (Forever under 50,000 MAU) | **$0.00** |
-| **Amazon Rekognition** | 20,000 face matching scans (SearchFacesByImage) | $0.001 / Scan | **$20.00** |
-| **Amazon Firehose & Athena** | ~1GB Data Ingestion & Scanned by Athena query | $0.03/GB Ingestion + $5.00/TB Scanned | **$0.04** |
-| **Amazon CloudWatch** | 1GB Ingestion Logs + 3 Custom Metrics | $0.57 / GB Logs | **$1.47** |
-| **AWS CodeBuild & CodePipeline** | ~100 build minutes (linux-small) + 1 Active Pipeline | $0.005 / min + $1.00/Pipeline | **$1.50** |
-| **TOTAL** | **Smart Campus Operation Cost (200 Users)** | | **~ $34.48 / month** |
+| AWS Service | Expected Usage Level / Month | Unit Price (AP-SOUTHEAST-1) — Latest | Monthly Cost (USD) |
+|---|---|---|---|
+| AWS Lambda | 150,000 API Requests + 40,000 Worker executions (512MB, avg 1s) | $0.20 / 1M Requests + $0.0000166667 / GB-s | $1.37 |
+| Amazon API Gateway | 150,000 HTTP API calls | $1.25 / 1M Requests (≤300M/month) | $0.19 |
+| Amazon SQS | 50,000 Standard Queue Requests | $0.40 / 1M Requests | $0.02 |
+| Amazon DynamoDB | 500,000 WCU + 500,000 RCU (On-Demand) + 2GB Storage | $1.25/1M WCU + $0.25/1M RCU + $0.25/GB (reference price) | $1.26 |
+| Amazon S3 | ~5GB Storage + 100k GET/PUT | $0.025/GB + $0.005/1k PUT (reference price) | $0.65 |
+| Amazon CloudFront | 20GB Transfer Out + 200k HTTPS Requests | $0.12/GB (10TB first, from Singapore) (reference price) | $2.40 |
+| AWS WAF | 1 Web ACL + 1 Rule + 150k Requests | $5.00/Web ACL + $1.00/Rule + $0.60/1M Req (reference price) | $6.09 |
+| Amazon Cognito | < 1,000 MAU | Free (Free tier ≤ 50,000 MAU) | $0.00 |
+| Amazon Rekognition | 15,000 SearchFacesByImage calls | $0.001/image (reference price) | $15.00 |
+| Amazon Athena | ~1GB Data Scanned | $5.00/TB Scanned (reference price) | $0.005 |
+| Amazon CloudWatch | 1GB Log Ingestion + 3 Custom Metrics | $0.57/GB Logs + $0.30/metric/month (reference price) | $1.47 |
+| AWS CodeBuild + CodePipeline | ~100 build minutes (linux-small) + 1 Active Pipeline | $0.005/minute + $1.00/Pipeline (reference price) | $1.50 |
+| **TOTAL ESTIMATED COST** | | | **~$30.00** |
 
 ### 6.1. Cost Optimization Strategies
 Although the baseline operational cost is already very low, the system employs additional in-depth optimization strategies:

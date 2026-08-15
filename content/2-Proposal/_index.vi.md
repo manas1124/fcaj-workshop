@@ -108,21 +108,21 @@ Dự toán ngân sách được tính dựa trên quy mô vận hành thực t�
 
 Để chứng minh tính tối ưu của Serverless, dự toán dưới đây được tính **dựa trên đơn giá gốc (Pay-As-You-Go)** mà không phụ thuộc vào gói Free Tier 12 tháng của AWS.
 
-| DỊCH VỤ AWS | MỨC ĐỘ SỬ DỤNG DỰ KIẾN / THÁNG | ĐƠN GIÁ THAM KHẢO (AP-SOUTHEAST-1) | CHI PHÍ HÀNG THÁNG (USD) |
-| :--- | :--- | :--- | :---: |
-| **AWS Lambda** | 150,000 API Requests + 40,000 Worker executions (Memory: 512MB, Avg: 1s) | $0.20 / 1M Requests + Compute time | **$1.62** |
-| **Amazon API Gateway** | 150,000 HTTP API calls | $1.00 / 1M Requests | **$0.15** |
-| **Amazon SQS** | 50,000 SQS Requests (Send & Receive) | $0.40 / 1M Requests | **$0.02** |
-| **Amazon DynamoDB** | 500,000 WCU, 500,000 RCU (On-Demand Mode) + 2GB Storage | $1.25 / 1M WCU, $0.25 / 1M RCU + $0.25/GB | **$1.26** |
-| **Amazon S3** | ~5GB Storage (Frontend, Hình ảnh, Data Lake) + 100k GET/PUT | $0.025 / GB Storage + $0.004 / 1k PUT | **$0.53** |
-| **Amazon CloudFront** | 20GB Data Transfer Out + 200k HTTPS Requests | $0.09 / GB | **$1.80** |
-| **AWS WAF** | 1 Web ACL + 1 Rule (IP Match) + 150k Requests | $5.00/Web ACL + $1.00/Rule + $0.60/1M Req | **$6.09** |
-| **Amazon Cognito** | Dưới 1,000 MAU (Monthly Active Users) | Miễn phí (Dưới 50,000 MAU vĩnh viễn) | **$0.00** |
-| **Amazon Rekognition** | 20,000 lần quét ảnh đối chiếu khuôn mặt (SearchFacesByImage) | $0.001 / Ảnh quét | **$20.00** |
-| **Amazon Firehose & Athena** | ~1GB Data Ingestion & Scanned by Athena query | $0.03/GB Ingestion + $5.00/TB Scanned | **$0.04** |
-| **Amazon CloudWatch** | 1GB Ingestion Logs + 3 Custom Metrics | $0.57 / GB Logs | **$1.47** |
-| **AWS CodeBuild & CodePipeline** | ~100 phút build (linux-small) + 1 Active Pipeline | $0.005 / phút + $1.00/Pipeline | **$1.50** |
-| **TỔNG CỘNG** | **Chi phí vận hành mô hình Smart Campus (200 Users)** | | **~ $34.48 / tháng** |
+| Dịch Vụ AWS | Mức Độ Sử Dụng Dự Kiến / Tháng | Đơn Giá (AP-SOUTHEAST-1) — Mới Nhất | Chi Phí Hàng Tháng (USD) |
+|---|---|---|---|
+| AWS Lambda | 150,000 API Requests + 40,000 Worker executions (512MB, avg 1s) | $0.20 / 1M Requests + $0.0000166667 / GB-s | $1.37 |
+| Amazon API Gateway | 150,000 HTTP API calls | $1.25 / 1M Requests (≤300M/tháng) | $0.19 |
+| Amazon SQS | 50,000 Standard Queue Requests | $0.40 / 1M Requests | $0.02 |
+| Amazon DynamoDB | 500,000 WCU + 500,000 RCU (On-Demand) + 2GB Storage | $1.25/1M WCU + $0.25/1M RCU + $0.25/GB (giá tham khảo) | $1.26 |
+| Amazon S3 | ~5GB Storage + 100k GET/PUT | $0.025/GB + $0.005/1k PUT (giá tham khảo) | $0.65 |
+| Amazon CloudFront | 20GB Transfer Out + 200k HTTPS Requests | $0.12/GB (10TB đầu, từ Singapore) (giá tham khảo) | $2.40 |
+| AWS WAF | 1 Web ACL + 1 Rule + 150k Requests | $5.00/Web ACL + $1.00/Rule + $0.60/1M Req (giá tham khảo) | $6.09 |
+| Amazon Cognito | < 1,000 MAU | Miễn phí (Free tier ≤ 50,000 MAU) | $0.00 |
+| Amazon Rekognition | 15,000 lần SearchFacesByImage | $0.001/ảnh (giá tham khảo) | $15.00 |
+| Amazon Athena | ~1GB Data Scanned | $5.00/TB Scanned (giá tham khảo) | $0.005 |
+| Amazon CloudWatch | 1GB Log Ingestion + 3 Custom Metrics | $0.57/GB Logs + $0.30/metric/tháng (giá tham khảo) | $1.47 |
+| AWS CodeBuild + CodePipeline | ~100 phút build (linux-small) + 1 Active Pipeline | $0.005/phút + $1.00/Pipeline (giá tham khảo) | $1.50 |
+| **TỔNG CỘNG ƯỚC TÍNH** | | | **~$30.00** |
 
 ### 6.1. Chiến Lược Tối Ưu Chi Phí
 Mặc dù chi phí vận hành cơ bản đã rất thấp, hệ thống vẫn áp dụng thêm các chiến lược tối ưu chuyên sâu:
